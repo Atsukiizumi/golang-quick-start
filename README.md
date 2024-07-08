@@ -1,2 +1,3 @@
 # Quick to learn Golang
-## use less time to study new program language
+Use less time to study new program language.
+Quick to start Golang!

@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 数组在传参的时候，golang会分配新的内存存储数组的值
 func main() {
 	var arr [10]int
 	fmt.Println("arr:", arr)
@@ -17,4 +18,9 @@ func main() {
 	for index, value := range arr2 {
 		fmt.Println(index, value)
 	}
+
+	//查看数组类型
+	fmt.Printf("arr type is %T\n", arr)
+	fmt.Printf("arr2 type is %T\n", arr2)
+	fmt.Printf("arr3 type is %T\n", arr3)
 }
