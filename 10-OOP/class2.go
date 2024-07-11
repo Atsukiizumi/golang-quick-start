@@ -54,6 +54,7 @@ func main() {
 
 	sp := SuperMan{Human{"Gill", 12}, 20}
 	sp.Fly()
+	sp.Walk()
 	sp.Eat()
 	sp.Grow()
 	sp.BaseInfo()
