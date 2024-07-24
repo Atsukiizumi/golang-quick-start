@@ -38,28 +38,24 @@ type MakeCoffee struct {
 	template
 }
 
-func (m MakeCoffee) BoilWater() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeCoffee) BoilWater() {
+	fmt.Println("将水煮到100摄氏度")
 }
 
-func (m MakeCoffee) Brew() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeCoffee) Brew() {
+	fmt.Println("用水冲咖啡豆")
 }
 
-func (m MakeCoffee) PourInCup() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeCoffee) PourInCup() {
+	fmt.Println("将充好的咖啡倒入陶瓷杯中")
 }
 
-func (m MakeCoffee) AddThings() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeCoffee) AddThings() {
+	fmt.Println("添加牛奶和糖")
 }
 
-func (m MakeCoffee) WantAddThings() bool {
-	return false
+func (m *MakeCoffee) WantAddThings() bool {
+	return true
 }
 
 func NewMakeCoffee() *MakeCoffee {
@@ -72,28 +68,23 @@ type MakeTea struct {
 	template
 }
 
-func (m MakeTea) BoilWater() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeTea) BoilWater() {
+	fmt.Println("将水煮到80摄氏度")
 }
 
-func (m MakeTea) Brew() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeTea) Brew() {
+	fmt.Println("用水冲茶叶")
 }
 
-func (m MakeTea) PourInCup() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeTea) PourInCup() {
+	fmt.Println("将充好的咖啡倒入茶壶中")
 }
 
-func (m MakeTea) AddThings() {
-	//TODO implement me
-	panic("implement me")
+func (m *MakeTea) AddThings() {
+	fmt.Println("啥也不加")
 }
 
-func (m MakeTea) WantAddThings() bool {
-	//TODO implement me
+func (m *MakeTea) WantAddThings() bool {
 	return false
 }
 
