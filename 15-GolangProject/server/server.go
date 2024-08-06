@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net"
 	"sync"
+	"time"
 )
 
 type Server struct {
@@ -18,8 +20,6 @@ type Server struct {
 	//消息广播的channel
 	Message chan string
 }
-
-// 监听Message广播消息channel的
 
 // 创建一个server的接口
 func NewServer(ip string, port int) *Server {
@@ -59,18 +59,61 @@ func (this *Server) Handler(conn net.Conn) {
 	//当前链接业务
 	fmt.Println("连接建立成功")
 
-	// 用户上线，将用户加入到OnlineMap
-	user := NewUser(conn)
+	user := NewUser(conn, this)
+	//上线
+	user.Online()
 
-	this.mapLock.Lock()
-	this.OnlineMap[user.Name] = user
-	this.mapLock.Unlock()
+	//监听用户是否活跃的channel
+	isLive := make(chan bool)
 
-	//广播当前用户上限消息
-	this.BroadCast(user, "已上线")
+	//接受客户端发送的消息
+	go func() {
+		buf := make([]byte, 2048)
+		for {
+			n, err := conn.Read(buf)
+			if n == 0 {
+				user.Offline()
+				return
+			}
 
+			if err != nil && err != io.EOF {
+				fmt.Println("Conn Read err:", err)
+				return
+			}
+
+			//提取用户的消息(去除'\n')
+			msg := string(buf[:n-1])
+
+			//将得到的消息进行广播
+			user.DoMessage(msg)
+
+			//用户的任意消息，代表当前用户是一个活跃的
+			isLive <- true
+		}
+	}()
 	//当前handler阻塞
-	select {}
+	for {
+		select {
+		case <-isLive:
+			//当前用户是活跃的，应该重置定时器
+			//不做任何事情，为了激活select，更新下面的定时器
+
+		case <-time.After(time.Second * 10):
+			//已经超时
+			//将当前客户端强制关闭
+			user.SendMessage("你被爆了")
+
+			//销毁用的资源
+			close(user.C)
+
+			//关闭连接
+			conn.Close()
+
+			//退出当前Handler
+			//runtime.Goexit()
+			return
+		}
+	}
 }
 
 // 启动服务器的接口
