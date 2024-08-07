@@ -87,8 +87,44 @@ func (client *Client) PublicChat() {
 
 }
 
-func (client *Client) PrivateChat() {
+func (client *Client) SelectUsers() {
+	sendMsg := "who\n"
+	_, err := client.conn.Write([]byte(sendMsg))
+	if err != nil {
+		fmt.Println("conn.Write err:", err)
+		return
+	}
+}
 
+func (client *Client) PrivateChat() {
+	var remoteName string
+	var chatMsg string
+
+	// 查询用户在线情况
+	client.SelectUsers()
+	fmt.Println(">>>>>> 请输入聊天对象用户名，exit退出:")
+	fmt.Scanln(&remoteName)
+
+	for remoteName != "exit" {
+		fmt.Println(">>>>>> 请输入消息内容，exit退出:")
+		fmt.Scanln(&chatMsg)
+
+		for chatMsg != "exit" {
+			if len(chatMsg) != 0 {
+				sendMsg := "pm|" + remoteName + "|" + chatMsg + "\n"
+				_, err := client.conn.Write([]byte(sendMsg))
+				if err != nil {
+					fmt.Println("conn.Write err:", err)
+					break
+				}
+			}
+			chatMsg = ""
+			fmt.Scanln(&chatMsg)
+		}
+		client.SelectUsers()
+		fmt.Println(">>>>>> 请输入聊天对象用户名，exit退出:")
+		fmt.Scanln(&remoteName)
+	}
 }
 
 func (client *Client) UpdateName() bool {
