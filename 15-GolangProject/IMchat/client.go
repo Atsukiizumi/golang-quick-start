@@ -168,8 +168,8 @@ var serverIp string
 var serverPort int
 
 func init() {
-	flag.StringVar(&serverIp, "ip", "127.0.0.1", "server ip address")
-	flag.IntVar(&serverPort, "port", 14252, "server port number")
+	flag.StringVar(&serverIp, "ip", "127.0.0.1", "IMchat ip address")
+	flag.IntVar(&serverPort, "port", 14252, "IMchat port number")
 }
 
 func main() {

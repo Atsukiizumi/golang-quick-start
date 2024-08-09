@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type Account struct {
@@ -34,7 +35,7 @@ func (this *Account) accountingLog() {
 	fmt.Println("-------当前收支明细记录-------")
 	fmt.Println("收支\t账户金额\t收支金额\t说明")
 	if len(this.family.Billing) == 0 {
-		fmt.Println(">>>>>> 暂无数据")
+		fmt.Println(">>>>>> 暂无数据 <<<<<<")
 		return
 	}
 	for _, v := range this.family.Billing {
@@ -45,6 +46,7 @@ func (this *Account) accountingLog() {
 func (this *Account) revenue() {
 	var rate float64
 	var comment string
+	//TODO 判断输入金额
 	fmt.Print("本次收入金额：")
 	fmt.Scanln(&rate)
 	fmt.Print("本次收入说明：")
@@ -64,8 +66,10 @@ func (this *Account) revenue() {
 func (this *Account) expenditures() {
 	var rate float64
 	var comment string
+	//TODO 判断输入金额
 	fmt.Println("本次支出金额：")
 	fmt.Scanln(&rate)
+	//TODO 判断是否有余额？
 	fmt.Println("本次支出说明：")
 	inputreader := bufio.NewReader(os.Stdin)
 	input, err := inputreader.ReadString('\n')
@@ -95,7 +99,27 @@ func (this *Account) Run() {
 			this.expenditures()
 			break
 		case 4:
-			fmt.Println("感谢使用！")
+			//添加确认退出逻辑
+			flag := false
+			var yon string
+			for flag == false {
+				fmt.Println("确认要退出本程序吗？ y(Y)/n(N)")
+				fmt.Scanln(&yon)
+				switch strings.ToUpper(yon) {
+				case "Y":
+					fmt.Println("感谢使用！")
+					flag = true
+					break
+				case "N":
+					flag = true
+					this.flag = 0
+					break
+				default:
+					fmt.Println(">>>>>> 请输入正确的指令 <<<<<<")
+					flag = false
+					break
+				}
+			}
 			break
 		}
 	}

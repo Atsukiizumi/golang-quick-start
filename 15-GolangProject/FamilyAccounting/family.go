@@ -23,6 +23,7 @@ func NewFamily() *Family {
 	return family
 }
 
+// 感觉有点多余
 func (this *Family) UpdateBalance(money float64) float64 {
 	this.balance = this.balance + money
 	return this.balance

@@ -18,7 +18,7 @@ func (r *PingRouter) Handle(request ziface.IRequest) {
 }
 
 func main() {
-	//1 Create a server service
+	//1 Create a IMchat service
 	s := znet.NewServer()
 
 	//2 configure routing
