@@ -15,6 +15,11 @@ func main() {
 		fmt.Println(arr3[i])
 	}
 
+	//golang编译器识别长度，声明后无法自动扩充
+	arr4 := [...]string{"Text", "A"}
+
+	fmt.Println("arr4:", arr4)
+
 	for index, value := range arr2 {
 		fmt.Println(index, value)
 	}
@@ -23,4 +28,5 @@ func main() {
 	fmt.Printf("arr type is %T\n", arr)
 	fmt.Printf("arr2 type is %T\n", arr2)
 	fmt.Printf("arr3 type is %T\n", arr3)
+	fmt.Printf("arr4 type is %T\n", arr4)
 }

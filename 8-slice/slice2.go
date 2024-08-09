@@ -12,7 +12,7 @@ func main() {
 	slice2[0] = 1
 
 	//声明slice3是一个切片，同时给slice3分配空间，3个空间，初始化值是0
-	var slice3 []int = make([]int, 3)
+	var slice3 = make([]int, 3)
 
 	//声明slice4是一个切片，同时给slice4分配空间，3个空间，初始化值是0，通过:=推导出slice4是一个切片
 	slice4 := make([]int, 3)

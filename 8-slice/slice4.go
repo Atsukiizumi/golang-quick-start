@@ -9,4 +9,8 @@ func main() {
 	//[0,2]取两个元素
 	s1 := s[0:2]
 	fmt.Println("s1 = %v", s1)
+
+	//取全部元素
+	s2 := s[:]
+	fmt.Println("s2 = %v", s2)
 }
