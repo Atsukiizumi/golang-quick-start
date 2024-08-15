@@ -4,13 +4,13 @@ import (
 	"gorm.io/gorm"
 )
 
-type Category struct {
+type CategoryBasic struct {
 	gorm.Model
 	Identity string `gorm:"column:identity;type:varchar(36);" json:"identity"` //唯一标识
 	Name     string `gorm:"column:name;type:varchar(100);" json:"name"`        //分类名称
 	ParentId int    `gorm:"column:parent_id;type:int;" json:"parent_id"`       //父级ID
 }
 
-func (this *Category) TableName() string {
-	return "category"
+func (this *CategoryBasic) TableName() string {
+	return "category_basic"
 }
