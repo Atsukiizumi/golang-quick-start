@@ -1,6 +1,24 @@
 info:
   contact: {}
 paths:
+  /problem-detail:
+    get:
+      description: 问题详情
+      parameters:
+      - description: problem_identity
+        in: query
+        name: identity
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: code":"200","msg":"","data":""}
+          schema:
+            type: string
+      summary: 问题详情
+      tags:
+      - 公共方法
   /problem-list:
     get:
       description: 获取问题列表
@@ -13,6 +31,14 @@ paths:
         in: query
         name: size
         type: integer
+      - description: keyword
+        in: query
+        name: keyword
+        type: string
+      - description: category_identity
+        in: query
+        name: category_identity
+        type: string
       produces:
       - application/json
       responses:

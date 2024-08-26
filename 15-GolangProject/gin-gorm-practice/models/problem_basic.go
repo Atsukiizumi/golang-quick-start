@@ -6,8 +6,8 @@ import (
 
 type ProblemBasic struct {
 	gorm.Model
-	Identity          string             `gorm:"column:identity;type:varchar(36);" json:"identity"`   //问题表的唯一标识
-	ProblemCategories []*ProblemCategory `gorm:"foreignKey:problem_id;references:id"`                 //关联问题分类表
+	Identity          string             `gorm:"column:identity;type:varchar(36);" json:"identities"` //问题表的唯一标识
+	ProblemCategories []*ProblemCategory `gorm:"foreignKey:problem_id;references:id"`                 //关联问题分类表, 关联多个分类id
 	Title             string             `gorm:"column:title;type:varchar(255);" json:"title"`        //问题标题
 	Content           string             `gorm:"column:content;type:text;" json:"content"`            //问题正文
 	Max_Men           int                `gorm:"column:max_men;type:int(11);" json:"max_men"`         //最大运行内存
@@ -29,7 +29,7 @@ func GetProblemList(keyword, categoryIdentity string) *gorm.DB {
 		Where("title like ? OR content like ?", "%"+keyword+"%", "%"+keyword+"%")
 	if categoryIdentity != "" {
 		tx = tx.Joins("RIGHT JOIN problem_category pc on pc.problem_id = problem_basic.id").
-			Where("pc.category_id = {SELECT cb.id FROM category_basic cb WHERE cb.identity = ?}}", categoryIdentity)
+			Where("pc.category_id = (SELECT cb.id FROM category_basic cb WHERE cb.identities = ?)", categoryIdentity)
 	}
 	return tx
 }
