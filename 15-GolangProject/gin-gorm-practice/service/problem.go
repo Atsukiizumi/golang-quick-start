@@ -81,7 +81,10 @@ func GetProblemDetail(c *gin.Context) {
 		return
 	}
 	problemBasic := new(models.ProblemBasic)
-	err := models.DB.Where("identity = ?", identity).First(&problemBasic).Error
+	err := models.DB.Where("identities = ?", identity).
+		Preload("ProblemCategories").
+		Preload("ProblemCategories.CategoryBasic").
+		First(&problemBasic).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			c.JSON(http.StatusOK, gin.H{
@@ -89,12 +92,14 @@ func GetProblemDetail(c *gin.Context) {
 				"msg":  "问题不存在",
 				"data": nil,
 			})
+			return
 		}
 		c.JSON(http.StatusOK, gin.H{
 			"code": -1,
 			"data": nil,
-			"msg":  "Get Problem Detail Error" + err.Error(),
+			"msg":  "Get Problem Detail Error:" + err.Error(),
 		})
+		return
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"code": 200,
