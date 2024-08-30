@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"fmt"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/google/uuid"
 	"github.com/jordan-wright/email"
 	"net/smtp"
 )
@@ -73,4 +74,10 @@ func SendCode(toUserMail, code string) error {
 		&tls.Config{InsecureSkipVerify: true, ServerName: ""})
 
 	return err
+}
+
+// GetUUID
+// 生成 UUID
+func GetUUID() string {
+	return uuid.New().String()
 }

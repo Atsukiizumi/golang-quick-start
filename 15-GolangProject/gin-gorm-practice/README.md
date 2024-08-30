@@ -4,9 +4,15 @@ GOLANG 官网：https://golang.google.cn/
 
 GOLANG Document： https://pkg.go.dev/
 
-GORM 官网：
+GORM 官网：https://gorm.io/
+```shell
+go get -u gorm.io/gorm
+```
 
-Gin 官网：
+Gin 官网：https://gin-gonic.com/zh-cn/
+```shell
+go get -u github.com/gin-gonic/gin
+```
 
 ## 整合 Swagger
 
@@ -39,6 +45,13 @@ go install github.com/swaggo/swag/cmd/swag@latest
 
 2. 使用 `swag init` 命令生成文档，生成的文档将存储在 `docs/` 处。
 
+
+## 依赖：
+    - jwt
+    - email
+    - redis
+    - google/uuids
+
 ## 安装 jwt
 
 项目地址：https://github.com/golang-jwt/jwt
@@ -47,7 +60,24 @@ go install github.com/swaggo/swag/cmd/swag@latest
 go get -u github.com/golang-jwt/jwt/v5
 ```
 
+## 安装 email
+```shell
+go get -u github.com/jordan-wright/email
+```
+
 ## 安装 redis
+项目地址：https://github.com/redis/go-redis
+
+```shell
+go get -u github.com/redis/go-redis/v9
+```
+
+## 安装 Google-uuid
+项目地址：https://github.com/google/uuid
+
+```shell
+go get -u github.com/google/uuid
+```
 
 ## TODO List:
 

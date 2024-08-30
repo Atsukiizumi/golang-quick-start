@@ -4,6 +4,7 @@ import (
 	"GolangProject/gin-gorm-practice/helper"
 	"GolangProject/gin-gorm-practice/models"
 	"errors"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"net/http"
@@ -109,7 +110,7 @@ func Login(c *gin.Context) {
 // @Produce json
 // @Tags 公共方法
 // @Summary 发送验证码
-// @Param mail formData string false "user_smail"
+// @Param mail formData string false "user_mail"
 // @Success 200 {string} json{"code":"200","msg":""}
 // @Router /send-code [post]
 func SendCode(c *gin.Context) {
@@ -137,4 +138,35 @@ func SendCode(c *gin.Context) {
 		"msg":  "success",
 	})
 	return
+}
+
+// Register
+// @Schemes	user
+// @Description 用户注册
+// @Produce json
+// @Tags 公共方法
+// @Summary 用户注册
+// @Param name formData string false "user_name"
+// @Param code formData string false "user_code"
+// @Param password formData string false "user_password"
+// @Param phone formData string false "user_phone"
+// @Param mail formData string false "user_mail"
+// @Success 200 {string} json{"code":"200","msg":""}
+// @Router /register [post]
+func Register(c *gin.Context) {
+	name := c.PostForm("name")
+	code := c.PostForm("code")
+	pwd := c.PostForm("password")
+	phone := c.PostForm("phone")
+	mail := c.PostForm("mail")
+	if name == "" || code == "" || pwd == "" || mail == "" {
+		c.JSON(http.StatusOK, gin.H{
+			"code": -1,
+			"msg":  "参数不正确",
+		})
+		return
+	}
+
+	// 验证码是否正确
+	fmt.Println(phone)
 }
