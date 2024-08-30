@@ -22,7 +22,7 @@ func updateBook(book Book, title string, author string) {
 }
 
 func changeBook(book *Book, title string, author string) {
-	//传递一个副本，非引用
+	//传递一个副本，引用
 	book.title = title
 	book.author = author
 }
