@@ -84,6 +84,14 @@ go get -u github.com/google/uuid
 1. 更新框架
    - [ ] Swagger
          项目地址：https://github.com/go-swagger/go-swagger
+   - [ ] Email -> 使用原生mail库
    - [ ]
 2. 新增框架
-   - [ ]
+   - [ ] Go-Zero
+   项目地址：https://github.com/tal-tech/go-zero
+   - [ ] 日志
+   - [ ] NSQ 消息队列 
+   项目地址:https://github.com/nsqio/nsq
+   - [ ] TiDB?/ETCD?
+   - [ ] gRPC?
+   - [ ] ~~Vue3.5(咕咕咕)~~
