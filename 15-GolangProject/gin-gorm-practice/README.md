@@ -7,7 +7,36 @@ GOLANG Document： https://pkg.go.dev/
 GORM 官网：https://gorm.io/
 ```shell
 go get -u gorm.io/gorm
+#MySQL数据库驱动
+go get -u gorm.io/driver/mysql
+#SQL Server数据库驱动
+go get -u gorm.io/driver/sqlserver
 ```
+Gorm数据库连接
+```go
+//MySQL模板
+func Init() *gorm.DB {
+	dsn := "user:password@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+        log.Println("gorm init err:", err)
+	}
+	return db
+}
+
+//SQL Server模板
+func Init() *gorm.DB {
+    //操作数据库
+    dsn := "sqlserver://user:password@localhost:port?database=dbname"
+    db, err := gorm.Open(sqlserver.Open(dsn), &gorm.Config{})
+    if err != nil {
+        log.Println("gorm init err:", err)
+    }
+
+    return db
+}
+```
+
 
 Gin 官网：https://gin-gonic.com/zh-cn/
 ```shell
