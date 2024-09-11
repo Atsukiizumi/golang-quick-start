@@ -11,6 +11,8 @@ func main() {
 	fmt.Println("arr2:", arr2)
 
 	arr3 := [10]int{1}
+	fmt.Println("arr3's len:", len(arr3))
+	fmt.Println("arr3's cap: ", cap(arr3))
 	for i := 0; i < len(arr3); i++ {
 		fmt.Println(arr3[i])
 	}
@@ -23,6 +25,11 @@ func main() {
 	for index, value := range arr2 {
 		fmt.Println(index, value)
 	}
+
+	arr5 := [5]int{1, 2, 3, 4, 5}
+	s1 := arr5[0:3]
+	fmt.Printf("%v", s1)
+	fmt.Printf("%T\n", s1)
 
 	//查看数组类型
 	fmt.Printf("arr type is %T\n", arr)
