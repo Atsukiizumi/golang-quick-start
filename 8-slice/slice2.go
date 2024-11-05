@@ -17,10 +17,10 @@ func main() {
 	//声明slice4是一个切片，同时给slice4分配空间，3个空间，初始化值是0，通过:=推导出slice4是一个切片
 	slice4 := make([]int, 3)
 
-	fmt.Println("len = %d, slice=%v\n", len(slice1), slice1)
-	fmt.Println("len = %d, slice=%v\n", len(slice2), slice2)
-	fmt.Println("len = %d, slice=%v\n", len(slice3), slice3)
-	fmt.Println("len = %d, slice=%v\n", len(slice4), slice4)
+	fmt.Printf("len = %d, slice=%v\n", len(slice1), slice1)
+	fmt.Printf("len = %d, slice=%v\n", len(slice2), slice2)
+	fmt.Printf("len = %d, slice=%v\n", len(slice3), slice3)
+	fmt.Printf("len = %d, slice=%v\n", len(slice4), slice4)
 
 	var slice5 []int
 	//判断一个slice是否为0
