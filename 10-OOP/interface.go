@@ -7,7 +7,6 @@ type AnimalIF interface {
 	Sleep()
 	GetColor() string //获取动物的颜色
 	GetType() string  //获取动物的种类
-
 }
 
 // 具体的类

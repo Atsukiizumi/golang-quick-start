@@ -71,11 +71,49 @@ paths:
       summary: 问题列表
       tags:
       - 公共方法
+  /register:
+    post:
+      description: 用户注册
+      parameters:
+      - description: user_name
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: user_code
+        in: formData
+        name: userCode
+        required: true
+        type: string
+      - description: user_password
+        in: formData
+        name: password
+        required: true
+        type: string
+      - description: user_phone
+        in: formData
+        name: phone
+        type: string
+      - description: user_mail
+        in: formData
+        name: mail
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: code":"200","msg":""}
+          schema:
+            type: string
+      summary: 用户注册
+      tags:
+      - 公共方法
   /send-code:
     post:
       description: 发送验证码
       parameters:
-      - description: user_smail
+      - description: user_mail
         in: formData
         name: mail
         type: string

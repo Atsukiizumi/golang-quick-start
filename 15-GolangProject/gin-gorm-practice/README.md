@@ -101,6 +101,11 @@ go get -u github.com/jordan-wright/email
 go get -u github.com/redis/go-redis/v9
 ```
 
+```go
+var ctx  = context.Background()
+
+```
+
 ## 安装 Google-uuid
 项目地址：https://github.com/google/uuid
 
