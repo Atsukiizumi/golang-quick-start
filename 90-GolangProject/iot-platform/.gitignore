@@ -16,9 +16,9 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
-00-exam/
-/90-GolangProject/oa-api
-/90-GolangProject/gin-gorm-practice/define/pconfig.go
+
+# Private File
+define/pconfig.go
 
 # Go workspace file
 go.work
