@@ -1,8 +1,8 @@
 package test
 
 import (
+	"GolangProject/cloud-disk/core/define"
 	"GolangProject/cloud-disk/core/models"
-	"GolangProject/cloud-disk/define"
 	"bytes"
 	"encoding/json"
 	"fmt"

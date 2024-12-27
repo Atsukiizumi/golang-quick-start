@@ -1,7 +1,7 @@
 package models
 
 import (
-	"GolangProject/cloud-disk/define"
+	"GolangProject/cloud-disk/core/define"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"xorm.io/xorm"

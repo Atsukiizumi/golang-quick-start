@@ -4,6 +4,7 @@ go 1.23.1
 
 require (
 	github.com/go-sql-driver/mysql v1.8.1
+	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/zeromicro/go-zero v1.7.4
 	xorm.io/xorm v1.3.9
 )

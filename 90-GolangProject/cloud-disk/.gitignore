@@ -18,7 +18,7 @@
 # vendor/
 
 # Private File
-define/pconfig.go
+core/define/pconfig.go
 
 # Go workspace file
 go.work

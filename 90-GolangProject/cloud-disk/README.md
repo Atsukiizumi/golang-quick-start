@@ -25,8 +25,15 @@ go-zero[官网](https://go-zero.dev/) [DOCS](https://go-zero.dev/docs/tasks)
 ```shell
 > goctl api new core
 ```
-3. 
-4. 
+3. 启动服务
+```shell
+> go run core.go -f etc/core-api.yaml 
+```
+4. 使用api文件生成代码
+```shell
+> goctl api go -api core.api -dir . -style go_zero
+```
+5. 
 
 
 ## xorm
