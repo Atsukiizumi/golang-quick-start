@@ -114,6 +114,19 @@ var ctx = context.Background()
 go get -u github.com/google/uuid
 ```
 
+## 安装 Logurs 日志
+项目地址：https://github.com/sirupsen/logrus
+```shell
+go get -u github.com/sirupsen/logrus
+```
+
+## 或安装 Zap 日志
+项目地址：https://github.com/uber-go/zap
+```shell
+go get -u go.uber.org/zap
+```
+
+
 ## TODO List:
 
 1. 更新框架
@@ -124,7 +137,7 @@ go get -u github.com/google/uuid
 2. 新增框架
    - [ ] Go-Zero
    项目地址：https://github.com/tal-tech/go-zero
-   - [ ] 日志
+   - [x] 日志 - logrus/zap
    - [ ] NSQ 消息队列 
    项目地址:https://github.com/nsqio/nsq
    - [ ] TiDB?/ETCD?
